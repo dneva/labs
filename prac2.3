@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+	double a, b, t, y;
+	cout << "a,b" << endl;
+	cin >> a >> b;
+	if (a <= b)
+		y = (a-b)/(a+b)*(a+b)/(a*a - a*b + b*b);
+	else if (a > b)
+		y = a + log(b*b);
+	if (y==b)
+		t = (2*y+sqrt(y*y-a)/(2*b-sqrt(a*a-y)));
+	else if (y < b)
+		t = pow(sin(y),2)+1/tan(a-b);
+	else
+		t = pow(y*sin(a), 1.0 / 3) + 1 / sqrt(y*cos(b));
+	cout << "t = " << t << endl << "y = " << y << endl;
+	system("pause");
+	return 0;
+}
