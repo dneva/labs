@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+	double a, x, t, y;
+	cout << "a,b" << endl;
+	cin >> a >> x;
+	if (a <= x)
+		y = a+log(x+a);
+	else if (a > x)
+		y = sqrt(sin(a*x*3.14/180));
+	if (a>y)
+		t = y/(a-x);
+	else if (a==y)
+		t = y/(a-x)+(a+x)/(y*y);
+	else
+		t = tan(a*x*3.14 / 180 + cos(2 * a*y*3.14 / 180));
+	cout << "t = " << t << endl << "y = " << y << endl;
+	system("pause");
+	return 0;
+
+}
