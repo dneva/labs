@@ -1,14 +1,17 @@
 #include <iostream>
 #include <string>
-#include <clocale>
+//#include <windows.h>
+#include <locale>
 using namespace std;
-
 int main()
 {
     setlocale(0,"rus");
+  // SetConsoleCP(1251);
+   //SetConsoleOutputCP(1251);//корректный вывод русского языка
     string name;
-    cin >> name;
-    cout<<"Hello, " << name << endl;
+    cout<<"Введите имя"<< endl;
+    cin >> name;//считывание имени
+    cout<<"Привет, " << name << endl;//вывод приветствия
+    //system("pause");
     return 0;
 }
-
