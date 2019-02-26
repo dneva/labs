@@ -1,0 +1,48 @@
+#include <iostream>
+#include<string>
+#include <windows.h>
+using namespace std;
+struct Book
+{
+	string name;
+	string author;
+	int edition;
+	string publisher;
+	double price;
+	void define(string n, string a, int e, string pu, double p)
+	{
+		name = n;
+		author = a;
+		edition = e;
+		publisher = pu;
+		price = p;
+	}
+	void display(void)
+	{
+		cout << "Название: " << name << "; Автор: " << author << "; Издание: " << edition << "; Издательсво: " << publisher << "; Цена: " << price << endl;
+	}
+};
+int main()
+{
+	setlocale(0,"rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	Book b;
+	string n, a, pu;
+	int e;
+	double p;
+	cout << "Введите название" << endl;
+	getline(cin,n);
+	cout << "Введите автора" << endl;
+	getline(cin, a);
+	cout << "Введите издательство" << endl;
+	getline(cin, pu);
+	cout << "Введите издание" << endl;
+	cin >> e;
+	cout << "Введите цену" << endl;
+	cin >> p;
+	b.define(n,a,e,pu,p);	
+	b.display();
+	system("pause");
+	return 0;
+}
