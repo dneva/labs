@@ -2,32 +2,34 @@
 #include<string>
 #include <windows.h>
 using namespace std;
-struct Book
+class Book//определение класса
 {
-	string name;
-	string author;
-	int edition;
-	string publisher;
-	double price;
-	void define(string n, string a, int e, string pu, double p)
-	{
-		name = n;
-		author = a;
-		edition = e;
-		publisher = pu;
-		price = p;
-	}
-	void display(void)
-	{
-		cout << "Название: " << name << "; Автор: " << author << "; Издание: " << edition << "; Издательсво: " << publisher << "; Цена: " << price << endl;
-	}
+	private:
+		string name;//поле класса для названия
+		string author;//поле класса для автора
+		int edition;//поле класса для издания
+		string publisher;//поле класса для издательство
+		double price;//поле класса для цены
+	public:
+		void define(string n, string a, int e, string pu, double p)//метод класса, изменяющий значения полей
+		{
+			name = n;
+			author = a;
+			edition = e;
+			publisher = pu;
+			price = p;
+		}
+		void display(void)//метод класса, отображающий значения полей
+		{
+			cout << "Название: " << name << "; Автор: " << author << "; Издание: " << edition << "; Издательсво: " << publisher << "; Цена: " << price << endl;
+		}
 };
 int main()
 {
-	setlocale(0,"rus");
+	setlocale(0,"rus");//вывод на русском
 	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-	Book b;
+	SetConsoleOutputCP(1251);//ввод на русском
+	Book b;//определение объекта класса Book
 	string n, a, pu;
 	int e;
 	double p;
@@ -41,8 +43,8 @@ int main()
 	cin >> e;
 	cout << "Введите цену" << endl;
 	cin >> p;
-	b.define(n,a,e,pu,p);	
-	b.display();
+	b.define(n,a,e,pu,p);//вызов метода define()	
+	b.display();//вызов метода display
 	system("pause");
 	return 0;
 }
