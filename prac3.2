@@ -1,0 +1,48 @@
+#include <iostream>
+#include<string>
+#include <windows.h>
+using namespace std;
+class Gropup_S//определение класса
+{
+	private:
+		string name;//поле класса для имени
+		string surname;//поле класса для фамилии
+		string midname;//поле класса для отчества
+		int mark[5];//поле класса для оценки
+	public:
+		void define(string n, string s, string m, int ma[5])//метод класса, изменяющий значения полей
+		{
+			name = n;
+			surname = s;
+			midname = m;
+			for (int i = 0; i < 5; i++)
+				mark[i] = ma[i];
+		}
+		void display(void)//метод класса, отображающий значения полей
+		{
+			cout << "Имя: " << name << "; Фамилия: " << surname << "; Отчество: " << midname << "; Оценки: " << endl;
+			for (int i = 0; i < 5; i++) cout << mark[i] << " ";
+			cout << endl;
+		}
+};
+int main()
+{
+	setlocale(0,"rus");//вывод на русском
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);//ввод на русском
+	Gropup_S g;//определение объекта класса Gropup_S
+	string n, s, m;
+	int ma[5];
+	cout << "Введите имя студента" << endl;
+	getline(cin,n);
+	cout << "Введите фамилию студента" << endl;
+	getline(cin, s);
+	cout << "Введите отчество студента" << endl;
+	getline(cin, m);
+	cout << "Введите оценки" << endl;
+	for (int i = 0; i < 5; i++) cin >> ma[i];
+	g.define(n,s,m,ma);//вызов метода define()	
+	g.display();//вызов метода display
+	system("pause");
+	return 0;
+}
