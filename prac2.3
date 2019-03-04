@@ -7,15 +7,15 @@ int main()
 	double a, b, t, y;
 	cout << "a,b" << endl;
 	cin >> a >> b;
-	if (a <= b)
+	if (a <= b)//Ветка 1.1
 		y = (a-b)/(a+b)*(a+b)/(a*a - a*b + b*b);
-	else if (a > b)
+	else if (a > b)//Ветка 1.2
 		y = a + log(b*b);
-	if (y==b)
+	if (y==b)//Ветка 2.1
 		t = (2*y+sqrt(y*y-a)/(2*b-sqrt(a*a-y)));
-	else if (y < b)
+	else if (y < b)//Ветка 2.2
 		t = pow(sin(y),2)+1/tan(a-b);
-	else
+	else//Ветка 2.3
 		t = pow(y*sin(a), 1.0 / 3) + 1 / sqrt(y*cos(b));
 	cout << "t = " << t << endl << "y = " << y << endl;
 	system("pause");
