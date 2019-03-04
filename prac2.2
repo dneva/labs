@@ -7,15 +7,15 @@ int main()
 	double a, b, t, z;
 	cout << "a,b" << endl;
 	cin >> a >> b;
-	if (a >= b)
+	if (a >= b)//Ветка 1.1
 		z = 1 - 2 * cos(a)*sin(b);
-	else if (a<b)
+	else if (a<b)//Ветка 1.2
 		z = pow(abs(a*a - b*b), (1.0 / 2));
-	if (z<b)
+	if (z<b)//Ветка 2.1
 		t = pow((z + a*a*b), 1.0 / 3);
-	else if (z == b)
+	else if (z == b)//Ветка 2.2
 		t = 1 - log(z) + cos(a*a*b);
-	else
+	else//Ветка 2.3
 		t = 1 / cos(z*a);
 	cout << "t = " << t << endl << "z = " << z<< endl;
 	system("pause");
