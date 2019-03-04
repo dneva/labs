@@ -7,15 +7,15 @@ int main()
 	double a, b, n, m;
 	cout << "a,b" << endl;
 	cin >> a >> b;
-	if (a >= b)
+	if (a >= b)//Ветка 1.1
 		n = pow(a - b, (1.0 / 3));
-	else if (a<b)
+	else if (a<b)//Ветка 1.2
 		n = a*a + (a - b) / sin(a*b);
-	if (n<b)
+	if (n<b)//Ветка 2.1
 		m = (n + a) / -b + pow((sin(a)*sin(a) - cos(n)), 1.0 / 2);
-	else if (n == b)
+	else if (n == b)//Ветка 2.2
 		m = b*b + tan(n*a);
-	else
+	else//Ветка 2.3
 		m = pow(b, 3) + n*a*a;
 	cout << "m = " << m << endl << "n = " << n << endl;
 	system("pause");
