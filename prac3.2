@@ -1,8 +1,8 @@
 #include <iostream>
 #include<string>
-#include <windows.h>
+//#include <windows.h>
 using namespace std;
-class Gropup_S//определение класса
+class Student
 {
 	private:
 		string name;//поле класса для имени
@@ -25,24 +25,64 @@ class Gropup_S//определение класса
 			cout << endl;
 		}
 };
+class Group_S//определение класса
+{
+ 	private:
+		string name;//поле для названия группы
+		int number;//поле для числа студентов
+		Student *st;//поле для студентов 
+	public:
+		void define(string n, int num)
+		{
+			name = n;
+			number = num;
+			st = new Student[num];
+			string na, s, m;
+			int ma[5];
+		
+			for(int i = 0; i<num;i++)
+			{
+				cin.ignore();
+				cout << "Введите имя студента" << endl;
+				getline(cin,na);
+				cout << "Введите фамилию студента" << endl;
+				getline(cin, s);
+				cout << "Введите отчество студента" << endl;
+				getline(cin, m);
+				cout << "Введите оценки" << endl;
+				for (int j = 0; j < 5; j++) cin >> ma[j];
+				st[i].define(na,s,m,ma);//вызов метода define()	
+			}
+		}
+		void display(void)//метод класса, отображающий значения полей
+		{
+				cout << "Название: " << name << "; Количество студентов: " << number << endl;
+				for (int i = 0; i < number; i++)
+				{
+					st[i].display();
+					cout << endl;
+				}
+		}
+		void delete_st(void)//метод удаление массива
+		{
+			delete []st;
+		}
+};
 int main()
 {
 	setlocale(0,"rus");//вывод на русском
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);//ввод на русском
-	Gropup_S g;//определение объекта класса Gropup_S
-	string n, s, m;
-	int ma[5];
-	cout << "Введите имя студента" << endl;
-	getline(cin,n);
-	cout << "Введите фамилию студента" << endl;
-	getline(cin, s);
-	cout << "Введите отчество студента" << endl;
-	getline(cin, m);
-	cout << "Введите оценки" << endl;
-	for (int i = 0; i < 5; i++) cin >> ma[i];
-	g.define(n,s,m,ma);//вызов метода define()	
+//	SetConsoleCP(1251);
+//	SetConsoleOutputCP(1251);//ввод на русском
+	Group_S g;//определение объекта класса Gropup_S
+	string n;
+	int num;
+	cout << "Введите название группы" << endl;
+	getline(cin, n);
+	cout << "Введите количество студентов" << endl;
+	cin >> num;
+	g.define(n,num);//вызов метода define()	
 	g.display();//вызов метода display
+	g.delete_st();
 	system("pause");
 	return 0;
 }
