@@ -1,7 +1,6 @@
-//Добавить удаление массива delete [] array
 #include <iostream>
 #include<string>
-#include <windows.h>
+//#include <windows.h>
 using namespace std;
 class Book//определение класса
 {
@@ -68,12 +67,16 @@ class Library//определение класса
 					cout << endl;
 				}
 		}
+		void delete_b(void)//метод удаление массива
+		{
+			delete []books;
+		}
 };
 int main()
 {
 	setlocale(0,"rus");//вывод на русском
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);//ввод на русском
+	//SetConsoleCP(1251);
+	//SetConsoleOutputCP(1251);//ввод на русском
 	Library l;//определение объекта класса Library
 	string n, a;
 	int num;
@@ -86,6 +89,7 @@ int main()
 	
 	l.define(n,a,num);//вызов метода define()	
 	l.display();//вызов метода display
+	l.delete_b();
 	system("pause");
 	return 0;
 }
