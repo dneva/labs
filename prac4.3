@@ -1,0 +1,41 @@
+#include <iostream>
+#include <ctime>
+using namespace std;
+void fill(int **a, int i, int j)//функция заполнения массива
+{
+	srand(time(0));
+	for(int l=0;l<i;l++)
+		for (int c = 0; c < j; c++)
+		{
+			a[l][c] = 10+rand()%40;
+		}
+}
+void show(int **a, int i, int j)//функция вывода массива
+{
+	for (int l = 0; l < i; l++)
+	{
+		for (int c = 0; c < j; c++)
+		{
+			cout << a[l][c] << " ";
+		}
+		cout << endl;
+	}
+
+}
+int main()
+{
+	int i, j;
+	cout << "Input the number of lines" << endl;//ввод строк
+	cin >> i;
+	cout << "Input the number of columns" << endl;//ввод столбцов
+	cin >> j;
+	int **a = new int*[i];//создание динамического двумерного массива
+	for (int c = 0; c < i; c++)
+	{
+		a[c] = new int[j];
+	}
+	fill(a,i,j);
+	show(a, i, j);
+	system("pause");
+	return 0;
+}
