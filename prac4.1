@@ -1,0 +1,41 @@
+#include <iostream>
+#include <ctime>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+	int sw=1;
+	int size;
+	while (sw != 0)
+	{
+		switch (sw)
+		{
+			case 1:
+			{	
+				double *a;//объявление указателя на массив
+				cout << "Enter the dimension of the array: ";
+				cin >> size;//ввод размера массива
+				a = new double[size];//выделение памяти под массив
+				for (int i = 0; i < size; i++)
+				{
+					a[i] = (double)(rand() % 1000 - 50) / 100;//заполнение массива элементами
+					cout << a[i] << " ";//вывод элементов массива
+				}
+				cout << endl;
+				delete[] a;//освобождение памяти
+			}
+			break;
+			case 0://выход из цикла
+				break;
+			default:
+				cout << "Repeat input" << endl;
+				break;
+			}
+			cout << "1 - continue, 0 - exit" << endl;//предложение продолжить работу
+			cin >> sw;
+	}
+	system("pause");
+	return 0;
+
+}
