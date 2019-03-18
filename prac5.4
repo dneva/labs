@@ -1,0 +1,105 @@
+#include <iostream>
+#include <ctime>
+#include <cmath>
+using namespace std;
+int sum(int a,int b)//сложение целых чисел
+{
+	return a + b;
+}
+double sum(double a, double b)//сложение дробных чисел
+{
+	return a + b;
+}
+int min(int a, int b)//вычитание целых чисел
+{
+	return (a - b);
+}
+double min(double a, double b)//вычитание дробных чисел
+{
+	return a - b;
+}
+int multiply(int a, int b)//умножение целых чисел
+{
+	return a * b;
+}
+double multiply(double a, double b)//умножение дробных чисел
+{
+	return a * b;
+}
+int divide(int a, int b)//деление целых чисел
+{
+	if (b != 0)
+		return a / b;
+	else
+	{
+		cout << "Division by zero" << endl;
+		return -1;
+	}
+		
+}
+double divide(double a, double b)//деление дробных чисел
+{
+	if (b != 0)
+		return a / b;
+	else
+	{
+		cout << "Division by zero" << endl;
+		return -1;
+	}
+}
+int main()
+{
+	int type;
+	double a, b;
+	int sw = 1;
+	cout << "1 - sum, 2 - minus, 3 - multiply, 4 - divide,  0 - exit" << endl;//выбор
+	cin >> sw;
+	while (sw != 0)
+	{	
+		switch (sw)
+		{
+		case 1://сложение
+		{
+			cout << "Input a,b" << endl;
+			cin >> a >> b;
+			cout << "INT: " << sum((int)a, (int)b) << endl;
+			cout << "DOUBLE: " << sum(a, b) << endl;
+		}
+		break;
+		case 2://вычитание
+		{
+			cout << "Input a,b" << endl;
+			cin >> a >> b;
+			cout << "INT: " << min((int)a, (int)b) << endl;
+			cout << "DOUBLE: " << min(a, b) << endl;
+		}
+		break;
+		case 3://умножение
+		{
+			cout << "Input a,b" << endl;
+			cin >> a >> b;
+			cout << "INT: " << multiply((int)a, (int)b) << endl;
+			cout << "DOUBLE: " << multiply(a, b) << endl;
+		}
+		break;
+		case 4://деление
+		{
+			cout << "Input a,b" << endl;
+			cin >> a >> b;
+			cout << "INT: " << divide((int)a, (int)b) << endl;
+			cout << "DOUBLE: " << divide(a, b) << endl;
+		}
+		break;
+		case 0://выход из цикла
+			break;
+		default:
+			cout << "Repeat input" << endl;
+			break;
+		}
+		cout << "1 - sum, 2 - minus, 3 - multiply, 4 - divide,  0 - exit" << endl;
+		cin >> sw;
+		}
+		system("pause");
+		return 0;
+
+}
