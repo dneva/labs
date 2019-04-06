@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+class Property
+{
+	protected:
+		double worth;
+	public:
+		Property(double w): worth(w) {};
+		virtual ~Property() {};
+		virtual double tax() = 0;
+};
+class Appartment : public Property
+{
+	public:
+		Appartment(double w) : Property(w) {};
+		double tax()
+		{
+			return worth/1000;
+		}
+};
+class Car : public Property
+{
+		public:
+			Car(double w) : Property(w) {};
+			double tax()
+			{
+				return worth / 200;
+			}
+};
+class CountryHouse : public Property
+{
+	public:
+		CountryHouse(double w) : Property(w) {};
+		double tax()
+		{
+			return worth / 500;
+		}
+
+};
+
+int main()
+{
+	Property *properties[7];
+	double w;
+	for (int i = 0; i < 7; i++)
+	{
+		cout << "Input worth" << endl;
+		cin >> w;
+		if (i < 3)
+			properties[i] = new Appartment(w);
+		else if (i == 3 || i == 4)
+			properties[i] = new Car(w);
+		else
+			properties[i] = new CountryHouse(w);
+	}
+	cout << "Taxes:" << endl;
+	for (int i = 0; i < 7; i++) cout << (properties[i]->tax()) << endl;
+	for (int i = 0; i < 7; i++) delete properties[i];
+	system("pause");
+	return 0;
+}
