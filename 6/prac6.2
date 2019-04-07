@@ -1,0 +1,140 @@
+#include<iostream>
+using namespace std;
+class Expression
+{
+protected:
+	double a;
+public:
+	Expression(double b=0) : a(b) {};
+	virtual void print() = 0;
+	virtual double result(double b) = 0;
+	virtual void derivative() = 0;
+	virtual void copy(double b) = 0;
+	virtual ~Expression() {};
+};
+class Cons : Expression
+{
+	Cons(double b) : Expression(b) {};
+	void print()
+	{
+		cout << "Constant:" << endl;
+	}
+	double result(double b)
+	{
+		return a;
+	}
+	void derivative()
+	{
+		cout << '0' << endl;
+	}
+	void copy(double b)
+	{
+		
+	}
+};
+class Var : Expression
+{
+	Var(double b) : Expression(b) {};
+	void print()
+	{
+		cout << "Variable:" << endl;
+	}
+	double result(double b)
+	{
+		return b;
+	}
+	void derivative()
+	{
+		cout << '1' << endl;
+	}
+	void copy(double b)
+	{
+		a = b;
+	}
+};
+class Sum : Expression
+{
+	Sum(double b) : Expression(b) {};
+	void print()
+	{
+		cout << "Sum:" << endl;
+	}
+	double result(double b)
+	{
+		return a+b;
+	}
+	void derivative()
+	{
+		cout << '1' << endl;
+	}
+	void copy(double b)
+	{
+		a = a + b;
+	}
+};
+class Dif : Expression
+{
+	Dif(double b) : Expression(b) {};
+	void print()
+	{
+		cout << "Variable:" << endl;
+	}
+	double result(double b)
+	{
+		return a-b;
+	}
+	void derivative()
+	{
+		cout << 1 << endl;
+	}
+	void copy(double b)
+	{
+		a = a - b;
+	}
+};
+class Mult : Expression
+{
+	Mult(double b) : Expression(b) {};
+	void print()
+	{
+		cout << "Variable:" << endl;
+	}
+	double result(double b)
+	{
+		return a - b;
+	}
+	void derivative()
+	{
+		cout << 1 << endl;
+	}
+	void copy(double b)
+	{
+		a = a - b;
+	}
+};
+class Pri : Expression
+{
+
+};
+class Sin : Expression
+{
+
+};
+class Cos : Expression
+{
+
+};
+class Exp : Expression
+{
+
+};
+class Ln : Expression
+{
+
+};
+int main()
+{
+
+	system("pause");
+	return 0;
+}
