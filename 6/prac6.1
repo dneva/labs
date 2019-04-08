@@ -1,15 +1,15 @@
 #include<iostream>
 using namespace std;
-class Property
+class Property//класс "собственность"
 {
 	protected:
-		double worth;
+		double worth;//стоимость
 	public:
 		Property(double w): worth(w) {};
 		virtual ~Property() {};
-		virtual double tax() = 0;
+		virtual double tax() = 0;//виртуальная функция налогов
 };
-class Appartment : public Property
+class Appartment : public Property// класс "квартира"
 {
 	public:
 		Appartment(double w) : Property(w) {};
@@ -18,7 +18,7 @@ class Appartment : public Property
 			return worth/1000;
 		}
 };
-class Car : public Property
+class Car : public Property// класс "машина"
 {
 		public:
 			Car(double w) : Property(w) {};
@@ -27,7 +27,7 @@ class Car : public Property
 				return worth / 200;
 			}
 };
-class CountryHouse : public Property
+class CountryHouse : public Property// класс "дача"
 {
 	public:
 		CountryHouse(double w) : Property(w) {};
@@ -40,22 +40,22 @@ class CountryHouse : public Property
 
 int main()
 {
-	Property *properties[7];
+	Property *properties[7];//массив указателей на Property
 	double w;
 	for (int i = 0; i < 7; i++)
 	{
 		cout << "Input worth" << endl;
 		cin >> w;
-		if (i < 3)
+		if (i < 3)// первые 2 - класс "квартира"
 			properties[i] = new Appartment(w);
-		else if (i == 3 || i == 4)
+		else if (i == 3 || i == 4)// следующие 2 - класс "машина"
 			properties[i] = new Car(w);
-		else
+		else//последние 2 - класс "дача"
 			properties[i] = new CountryHouse(w);
 	}
 	cout << "Taxes:" << endl;
-	for (int i = 0; i < 7; i++) cout << (properties[i]->tax()) << endl;
-	for (int i = 0; i < 7; i++) delete properties[i];
+	for (int i = 0; i < 7; i++) cout << (properties[i]->tax()) << endl;//вывод налогов
+	for (int i = 0; i < 7; i++) delete properties[i];//удаление массива
 	system("pause");
 	return 0;
 }
