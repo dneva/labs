@@ -1,0 +1,56 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Shape// абстрактный класс "фигура"
+{
+	protected:
+		double s;
+	public:
+		virtual double square() = 0;
+};
+class Quadrilateral : Shape // абстрактный класс "четырехугольник"
+{
+	protected:
+		double a, b;
+	public:
+		Quadrilateral(double a1, double a2)
+		{ 
+			a = a1; 
+			b = a2;
+		};
+};
+class Rhombus : Quadrilateral// класс "ромб"
+{
+	private:
+		double sn;
+	public:
+		Rhombus(double a1, double a2, double s) : Quadrilateral(a1, a2) { sn = s; };
+		double square()
+		{
+			return a*b*sin(sn*3.14 / 180);
+		}
+};
+class Rectangle : Quadrilateral// класс "прямоугольник"
+{
+public:
+	Rectangle(double a1, double a2) : Quadrilateral(a1, a2) {};
+	double square()
+	{
+		return a*b;
+	}
+};
+
+int main()
+{
+	double a, b;
+	cout << "Enter the side and angle of the rhombus" << endl;
+	cin >> a >> b;
+	Rhombus rh(a, a, b);
+	cout << "Enter the sides of the rectangle" << endl;
+	cin >> a >> b;
+	Rectangle re(a, b);
+	cout << "Square of the rhombus = " << rh.square() << endl;
+	cout << "Square of the  rectangle = " << re.square() << endl;
+	system("pause");
+	return 0;
+}
