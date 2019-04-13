@@ -3,24 +3,120 @@
 using namespace std;
 class Vehicle// абстрактный класс "транспортное средство"
 {
+	protected:
+		double x, y, dir;
+	public:
+		Vehicle(double xx, double yy, double d) : x(xx), y(yy), dir(d) {};
+		virtual void move(double len) = 0;//движение транспорта
+		void setDir(double nd) //установить направление
+		{
+			dir = nd;
+		}
+		void returnPosition()//вывод позиции 
+		{
+			cout << "x = " << x << " ; y = " << y << "; direction = " << dir << endl;
+		}
+};
+class Car : public Vehicle// класс "автомобиль"
+{
+	private:
+		double fuel, fcons;
+		int passengers;
+	public:
+		Car(double xx, double yy, double d, double fc) : Vehicle(xx, yy, d), passengers(0), fuel(0), fcons(fc) {};
+		void move(double len)
+		{
+			if (fuel >= len / fcons)
+			{
+				x += len*cos(dir);
+				y += len*sin(dir);
+				fuel -= len / fcons;
+			}
+			else cout << "no fuel" << endl;
+
+		}
+		void refuel(double f)//заправить бензин
+		{
+	
+			fuel += f;
+			cout << fuel << endl;
+		}
+		void enter(int n)//пассажиры зашли
+		{
+			if (n >= 0 && n < 4)
+				passengers += n;
+		}
+		void exit(int n)//пассажиры вышли
+		{
+			if (n >= 0 && n <= passengers)
+				passengers -= n;
+		}
+		
 
 };
-class Car : Vehicle// класс "автомобиль"
+class Bus : public Vehicle// класс "автобус" 
 {
-
+	private:
+		double money, fuel, fcons;
+		int passengers;
+	public:
+		Bus(double xx, double yy, double d, double fc) : Vehicle(xx, yy, d), passengers(0), money(0), fuel(0), fcons(fc) {};
+		void move(double len)
+		{
+			if (fuel >= len / fcons)
+			{
+				x += len*cos(dir);
+				y += len*sin(dir);
+				fuel -= len / fcons;
+				money += passengers*len;
+			}
+			else cout << "no fuel" << endl;
+		}
+		void refuel(double f)
+		{
+			fuel += f;
+		}
+		void enter(int n)
+		{
+			if (n >= 0 && n <= 65)
+				passengers += n;
+		}
+		void exit(int n)
+		{
+			if (n >= 0 && n <= passengers)
+				passengers -= n;
+		}
 };
-class Bus : Vehicle// класс "автобус" 
+class Bike : public Vehicle// класс "велосипед"
 {
-
-};
-class Bike : Vehicle// класс "велосипед"
-{
+	public:
+		Bike(double xx, double yy, double d) : Vehicle(xx, yy, d) {};
+		void move(double len)
+		{
+			x += len*cos(dir);
+			y += len*sin(dir);
+		}
 
 };
 
 int main()
 {
-
+	Car c(0, 0, 0, 10);
+	Bus b(0, 0, 0, 44);
+	Bike bi(0, 0, 0);
+	c.refuel(10000);
+	c.setDir(90);
+	c.move(100);
+	b.setDir(90);
+	b.move(10);
+	bi.setDir(30);
+	bi.move(10);
+	cout << "Car position: " << endl;
+	c.returnPosition();
+	cout << "Bus position: " << endl;
+	b.returnPosition();
+	cout << "Bike position: " << endl;
+	bi.returnPosition();
 	system("pause");
 	return 0;
 }
