@@ -1,0 +1,76 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Screen
+{
+	protected:
+		bool power;
+	public:
+		Screen() : power(0) {};
+		virtual void turnOn() = 0;
+		virtual void turnOff() = 0;
+};
+class Keyboard
+{
+	protected:
+		string text;
+	public:
+		Keyboard(): text("Hello!") {};
+		virtual void typeText(string t) = 0;
+};
+class Laptop: public Screen, public Keyboard
+{
+	public:
+		Laptop() {};
+		void turnOn() { power = 1; }
+		void turnOff() { power = 0; }
+		void typeText(string t) { text = t; }
+		void state()
+		{
+			if (power) cout << "Laptop on" << endl  << "Text:" << endl << text << endl;
+			else cout << "Laptop off" << endl;
+		}
+
+};
+class Mobile : public Screen, public Keyboard
+{
+	public:
+		Mobile() {};
+		void turnOn() { power = 1; }
+		void turnOff() { power = 0; }
+		void typeText(string t) { text = t; }
+		void state()
+		{
+			if (power) cout << "Mobile on" << endl << "Text:" << endl << text << endl;
+			else cout << "Movile off" << endl;
+		}
+};
+class PC : public Screen, public Keyboard
+{
+	private:
+		bool PCpower;
+	public:
+		PC() : PCpower(0) {};
+		void turnOn() { PCpower = 1; power = 1; }
+		void turnOff() { PCpower = 0; power = 0; }
+		void typeText(string t) { text = t; }
+		void state()
+		{
+			if (power && PCpower) cout << "PC on" << endl << "Text:" << endl << text << endl;
+			else cout << "PC off" << endl;
+		}
+};
+int main()
+{
+	Laptop l;
+	Mobile m;
+	PC p;
+	l.turnOn();
+	l.state();
+	m.turnOn();
+	m.state();
+	p.turnOn();
+	p.state();
+	system("pause");
+	return 0;
+}
