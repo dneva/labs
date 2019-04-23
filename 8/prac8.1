@@ -6,11 +6,6 @@ using namespace std;
 int main()
 {
 	string s;
-	cout << "Input text" << endl;
-	getline(cin,s);
-	ofstream fout("test.txt");
-	fout << s;
-	fout.close();
 	ifstream fin("test.txt");
 	while (fin >> s)
 		cout << s << endl;
