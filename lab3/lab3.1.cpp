@@ -5,17 +5,17 @@ using namespace std;
 class Child
 {
 	private:
-		string name;
-		string fam;
-		int age;
+		string name;//поле имени
+		string fam;//поле фамилии
+		int age;//поле возраста
 	public:
-		void define(string n, string f, int a)
+		void define(string n, string f, int a)//метод ввода
 		{
 			name = n;
 			fam = f;
 			age = a;		
 		}
-		void display()
+		void display()//метод вывода
 		{
 			cout << "Name: " << name << endl;
 			cout << "Surname: " << fam << endl;
