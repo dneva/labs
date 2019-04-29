@@ -1,0 +1,62 @@
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+class Alive// класс "Живое существо"
+{
+	protected:
+		string name;
+		string condition;
+	public:
+		Alive(string n="", string c="lives") : name(n),condition(c) {};
+		void change_c()
+		{
+			if (condition == "lives")
+				condition = "dead";
+		}
+		friend ostream& operator<<(ostream& out, const Alive& a);//перегрузка оператора <<
+};
+class Fish : public Alive// класс "Рыба"
+{
+	public:
+		Fish(string n = "", string c = "lives") : Alive(n, c) {};
+
+};
+class Bird : public Alive// класс "Птица"
+{
+	public:
+		Bird(string n = "", string c = "lives") : Alive(n,c) {};
+		void eat(Fish &f)//съесть рыбу
+		{
+			f.change_c();
+		}
+
+};
+
+class Animal : public Alive// класс "Животное"
+{
+	public:
+		Animal(string n = "", string c = "lives") : Alive(n, c) {};
+		void eat(Alive &a)//съесть живое существо
+		{
+			a.change_c();
+		}
+
+};
+ostream& operator<<(ostream& out, const Alive& a)
+{
+	out  <<  "Name: " << a.name << " Condition: " << a.condition;
+	return out;
+};
+
+int main()
+{
+	Animal lion("lion");
+	Bird seagull("seagull");
+	Fish salmon("salmon");
+	seagull.eat(salmon);
+	lion.eat(seagull);
+	cout << lion << endl << seagull << endl << salmon << endl;
+	system("pause");
+	return 0;
+}
