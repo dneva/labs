@@ -37,7 +37,7 @@ const Complex& operator--(Complex &left)
 };
 bool operator==(const Complex &left, const Complex &right)
 {
-	return left.real == right.real;
+	return (left.real == right.real && left.img == right.img);
 };
 ostream& operator<<(ostream& out, const Complex& c)
 {
