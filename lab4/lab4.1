@@ -12,6 +12,8 @@ public:
 	Complex(double r = 0, double i = 0) : re(r), im(i) {};//конструктор
 	Complex(const Complex& obj)//конструктор копирования
 	{
+		re = obj.re;
+		im = obj.im;
 		cout << "Copy constructor" << endl;
 	}
 	void define(double r, double i)//метод ввода
@@ -40,10 +42,10 @@ public:
 		else
 			return -M_PI / 2;
 	}
-	void sum(Complex obj)//суммирование
+	void sum(Complex &obj)//суммирование
 	{
-		re+=obj.re, 
-	    im+=obj.im;
+		re += obj.re,
+		im += obj.im;
 	}
 	~Complex()//деструктор
 	{
@@ -57,13 +59,14 @@ int main()
 	cout << "Input complex value" << endl;
 	cin >> r >> i;
 	c1.define(r, i);
-	cout << endl << "Complex value:" << endl;
+	cout << "Complex value:" << endl;
 	c1.display();
 	cout << "Module: " << c1.modul() << endl;
 	cout << "Argument: " << c1.arg() << endl;
-	cout << "Input complex value for sum" << endl;
+	cout << "Input complex value for sum" << endl;	
+	Complex c2(c1);
 	cin >> r >> i;
-	Complex c2(r,i);
+	c1.define(r, i);
 	c1.sum(c2);
 	c1.display();
 	system("pause");
