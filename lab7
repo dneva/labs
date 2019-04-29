@@ -1,0 +1,68 @@
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+class Human//Класс человек
+{
+protected:
+	string surname;
+	string name;
+	string midname;
+	int age;
+public:
+	Human() {};
+	Human(string s, string n, string m, int a) :surname(s), name(n), midname(m), age(a) {};
+	virtual void print()=0;
+	virtual ~Human() { cout << "Human Destructor" << endl; };
+};
+class Student: public Human//Класс студент
+{
+private:
+	bool on_lesson;
+public:
+	Student(string s, string n, string m, int a, bool b) : Human(s, n, m, a), on_lesson(b) {};
+	void print()
+	{
+		cout << "Surname: " << surname << endl;
+		cout << "Name: " << name << endl;
+		cout << "Midname: " << midname << endl;
+		cout << "Age: " << age << endl;
+		cout << "On lesson: " << on_lesson;
+	}
+};
+class Boss : public Human// Класс босс
+{
+private:
+	int number_of_workers;
+public:
+	Boss() {};
+	Boss(string s, string n, string m, int a, int now) : Human(s, n, m, a), number_of_workers(now) {};
+	void print()
+	{
+		cout << "Surname: " << surname << endl;
+		cout << "Name: " << name << endl;
+		cout << "Midname: " << midname << endl;
+		cout << "Age: " << age << endl;
+		cout << "Number of workers: " << number_of_workers << endl;
+	}
+	~Boss() { cout << "Boss Destructor" << endl; }
+};
+int main()
+{
+	string s, n, m;
+	int a, now;
+	bool b;
+	Human *h1, *h2;
+	cout << "Input student(Surname;Name;Midname;Age;On lesson)" << endl;
+	cin >> s >> n >> m >> a >> b;
+	h1 = new Student(s, n, m, a, b);
+	cout << "Input boss(Surname;Name;Midname;Age;Number of workers)" << endl;
+	cin >> s >> n >> m >> a >> now;
+	h2 = new Boss(s, n, m, a, now);
+	h1->print();
+	h2->print();
+	delete h1;
+	delete h2;
+	system("pause");
+	return 0;
+}
