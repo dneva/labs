@@ -1,0 +1,94 @@
+#include<iostream>
+#include<cmath>
+
+using namespace std;
+class Vector
+{
+private:
+	double x;
+	double y;
+	double z;
+public:
+	Vector(double x1 = 0, double y1 = 0, double z1 = 0) : x(x1), y(y1), z(z1) {};//конструктор
+	Vector(const Vector &obj)//конструктор копирования
+	{
+		x = obj.x;
+		y = obj.y;
+		z = obj.z;
+		cout << "Copy constructor" << endl;
+	}
+	Vector& operator=(const Vector& right);//перегрузка оператора =
+	friend bool operator==(const Vector &left, const Vector &right);//перегрузка оператора ==
+	friend ostream& operator<<(ostream& out, const Vector& v);//перегрузка оператора <<
+	friend istream& operator>>(istream& in, Vector& v);//перегрузка оператора >>
+	double modul()//модуль вектора
+	{
+		return sqrt(x*x + y*y + z*z);
+	}
+	void sum(Vector v)//сумма векторов
+	{
+		x += v.x;
+		y += v.y;
+		z += v.z;
+	}
+	void min(Vector v)//разница векторов
+	{
+		x -= v.x;
+		y -= v.y;
+		z -= v.z;
+	}
+	~Vector()//деструктор
+	{
+		cout << "Destructor" << endl;
+	}
+};
+Vector& Vector::operator=(const Vector& right) {
+	if (this == &right) {
+		return *this;
+	}
+	x = right.x;
+	y = right.y;
+	z = right.z;
+	return *this;
+};
+bool operator==(const Vector &left, const Vector &right)
+{
+	return (left.x == right.x && left.y == right.y && left.z == right.z);
+};
+ostream& operator<<(ostream& out, const Vector& v)
+{
+	out << " (" << v.x << ";" << v.y << ";" << v.z << ")";
+	return out;
+};
+
+istream& operator>>(istream& in, Vector& v)
+{
+	in >> v.x >> v.y >> v.z;
+	return in;
+};
+int main()
+{
+	Vector v1, v2;
+	cout << "Input vector" << endl;
+	cin >> v1;
+	cout << "Module: " << v1.modul() << endl;
+	cout << "Input vector for sum" << endl;
+	cin >> v2;
+	cout << "Result:" << endl;
+	v1.sum(v2);
+	cout<<v1<<endl;
+	cout << "Input vector for subtraction" << endl;
+	cin >> v2;
+	cout << "Result:" << endl;
+	v1.min(v2);
+	cout << v1 << endl;
+	cout << "Input vector for comparison" << endl;
+	cin >> v2;
+	cout << "Result:" << endl;
+	if (v1==v2)
+		cout << "v1=v2" <<endl;
+	else
+		cout << "v1!=v2" << endl;
+	system("pause");
+	return 0;
+}
