@@ -4,9 +4,13 @@ using namespace std;
 class Tiles
 {
 public:
-	Tiles(string b="<none>", double szh=0, double szw=0, double p=0) : brand(b), size_h(szh), size_w(szw), price(p) {};//констуртор
-	Tiles(const Tiles& obj)//констуртор копирования 
+	Tiles(string b = "<none>", double szh = 0, double szw = 0, double p = 0) : brand(b), size_h(szh), size_w(szw), price(p) {};//констуртор
+	Tiles(const Tiles& t)//констуртор копирования 
 	{
+		brand = t.brand;
+		size_h = t.size_h;
+		size_w = t.size_w;
+		price = t.price;
 		cout << "Copy consructor" << endl;
 	}
 	string brand;//марка
@@ -20,16 +24,9 @@ public:
 		cout << "Size weight: " << size_w << endl;
 		cout << "Price: " << price << endl;
 	}
-	void copy(Tiles &t)//копирование
-	{
-		brand = t.brand; 
-		size_h = t.size_h;
-		size_w = t.size_w;
-		price = t.price;
-	}
 	~Tiles()//деструктор
 	{
-		cout << "Destructor "<< endl;
+		cout << "Destructor " << endl;
 	}
 };
 int main()
@@ -39,13 +36,11 @@ int main()
 	cin >> t1.brand >> t1.size_h >> t1.size_w >> t1.price;
 	cout << "Input iformation(brand, size(height), size(weight), price) about the second tile" << endl;
 	cin >> t2.brand >> t2.size_h >> t2.size_w >> t2.price;
-	cout << endl;
 	t1.getData();
-	cout << endl;
 	t2.getData();
-	cout << "Copy the first tile in the second one" << endl;
-	t2.copy(t1);
-	t2.getData();
+	cout << "Copy the first tile in the third one" << endl;
+	Tiles t3(t1);
+	t3.getData();
 	system("pause");
 	return 0;
 }
