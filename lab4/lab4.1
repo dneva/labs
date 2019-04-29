@@ -1,0 +1,71 @@
+#define _USE_MATH_DEFINES
+#include<iostream>
+#include<cmath>
+
+using namespace std;
+class Complex
+{
+private:
+	double re;
+	double im;
+public:
+	Complex(double r = 0, double i = 0) : re(r), im(i) {};//конструктор
+	Complex(const Complex& obj)//конструктор копирования
+	{
+		cout << "Copy constructor" << endl;
+	}
+	void define(double r, double i)//метод ввода
+	{
+		re = r;
+		im = i;
+	}
+	void display()//метод вывода
+	{
+		cout << re << "+" << im << "i" << endl;
+	}
+	double modul()//модуль комплексного числа
+	{
+		return sqrt(re*re + im*im);
+	}
+	double arg()//аргумент комплексного числа
+	{
+		if (re > 0)
+			return atan(im / re);
+		else if (re < 0 && im >= 0)
+			return M_PI + atan(im / re);
+		else if (re < 0 && im < 0)
+			return -M_PI + atan(im / re);
+		else if (re == 0 && im > 0)
+			return M_PI / 2;
+		else
+			return -M_PI / 2;
+	}
+	void sum(Complex obj)//суммирование
+	{
+		re+=obj.re, 
+	    im+=obj.im;
+	}
+	~Complex()//деструктор
+	{
+		cout << "Destructor" << endl;
+	}
+};
+int main()
+{
+	Complex c1;
+	double r, i;
+	cout << "Input complex value" << endl;
+	cin >> r >> i;
+	c1.define(r, i);
+	cout << endl << "Complex value:" << endl;
+	c1.display();
+	cout << "Module: " << c1.modul() << endl;
+	cout << "Argument: " << c1.arg() << endl;
+	cout << "Input complex value for sum" << endl;
+	cin >> r >> i;
+	Complex c2(r,i);
+	c1.sum(c2);
+	c1.display();
+	system("pause");
+	return 0;
+}
