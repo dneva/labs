@@ -1,0 +1,66 @@
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+class Student// класс "Студент"
+{
+	protected:
+		string name;
+		string surname;
+		string group;
+	public:
+		Student(string n="", string s="", string g="") : name(n), surname(s), group(g) {};//Конструктор
+		void define(string n, string s, string g)
+		{
+			name = n; 
+			surname = s; 
+			group = g;
+		}
+		friend ostream& operator<<(ostream& out, const Student& s);//перегрузка оператора <<
+};
+class Grand_Student : public Student// класс "Староста"
+{
+private:
+	vector<Student> st;//Список старосты
+public:
+	Grand_Student(string n = "", string s = "", string g = "") : Student(n, s, g) {};
+	void count(Student s)//записать студента
+	{
+		st.push_back(s);
+	}
+	void show_st()//показать список
+	{
+		for (Student n : st) {
+			cout << n << endl;
+		}
+	}
+};
+	ostream& operator<<(ostream& out, const Student& s)
+	{
+			out << s.surname << " " <<  s.name << " " <<s.group;
+			return out;
+	};
+
+int main()
+{
+	string n,s,g;
+	int a;
+	Student stnt;
+	Grand_Student gd_stnt;
+	cout << "Input grand student(name,surname,group)" << endl;
+	cin >> n >> s >> g;
+	gd_stnt.define(n, s, g);
+	cout << "Input number of students" << endl;
+	cin >> a;
+	for (int i=0; i < a; i++)
+	{
+		cout << "Input student(name,surname,group)" << endl;
+		cin >> n >> s >> g;
+		stnt.define(n, s, g);
+		gd_stnt.count(stnt);
+	}
+	cout << "List of students:" << endl;
+	gd_stnt.show_st();
+	system("pause");
+	return 0;
+}
