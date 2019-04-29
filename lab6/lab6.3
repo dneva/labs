@@ -1,0 +1,46 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Animal// абстрактный класс "животное"
+{
+protected:
+	string name;
+public:
+	Animal(string n) : name(n) {};
+	virtual void voice() = 0;//виртуальная функция "подать голос"
+};
+class Cat : Animal// класс "кошка"
+{
+public:
+	Cat(string n) : Animal(n) {};
+	void voice()
+	{
+		cout << name << " - meow!" << endl;
+	}
+};
+class Dog : Animal// класс "собака"
+{
+public:
+	Dog(string n) : Animal(n) {};
+	void voice()
+	{
+		cout << name << " - woof!" << endl;
+	}
+};
+
+int main()
+{
+	string s;
+	cout << "Input cat's name" << endl;
+	cin >> s;
+	Cat c = s;
+	cout << "Input dog's name" << endl;
+	cin >> s;
+	Dog d = s;
+	cout << "Input parrot's name" << endl;
+	cin >> s;
+	c.voice();
+	d.voice();
+	system("pause");
+	return 0;
+}
