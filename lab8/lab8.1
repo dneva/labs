@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+class Human//Класс человек
+{
+protected:
+	string surname;
+	string name;
+	string midname;
+	int age;
+public:
+	Human() {};
+	Human(string s, string n, string m, int a) :surname(s), name(n), midname(m), age(a) {};
+	virtual void print()=0;
+};
+class Student: public Human//Класс студент
+{
+private:
+	bool on_lesson;
+public:
+	Student(string s, string n, string m, int a, bool b) : Human(s, n, m, a), on_lesson(b) {};
+	void print()
+	{
+		cout << "Surname: " << surname << endl;
+		cout << "Name: " << name << endl;
+		cout << "Midname: " << midname << endl;
+		cout << "Age: " << age << endl;
+		cout << "On lesson: " << on_lesson;
+	}
+	friend ostream& operator<<(ostream& out, const Student& s);//перегрузка оператора <<
+};
+ostream& operator<<(ostream& out, const Student& s)
+{
+		out << s.surname << " " <<  s.name << " " <<s.midname << " " << s.age << " "<<s.on_lesson;
+		return out;
+};
+int main()
+{
+  vector<Student> v;//вектор
+  int n,a;
+  string s,na,m;
+  bool b;
+  cout << "Input number of students"<<endl;
+  cin >> n;
+  for(int i=0;i<n;i++)//заполнение вектора
+  {
+      cout << "Input student(Surname;Name;Midname;Age;On lesson)"<<endl;
+      cin >> s >> na >> m >> a >> b;
+      v.push_back(Student(s, na, m, a, b));
+  }
+  cout << "Vector of Studenrs:"<< endl;
+  for(Student st : v)//вывод элементов вектора
+  {
+      cout << st << endl;
+  }
+}
