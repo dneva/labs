@@ -1,0 +1,83 @@
+#include<iostream>
+#include<string>
+#include<queue>
+#include<cmath>
+using namespace std;
+class Vehicle// абстрактный класс "транспортное средство"
+{
+	protected:
+		double x, y, dir;
+	public:
+		Vehicle(double xx, double yy, double d) : x(xx), y(yy), dir(d) {};
+		virtual void move(double len) = 0;//движение транспорта
+		void setDir(double nd) //установить направление
+		{
+			dir = nd;
+		}
+		void returnPosition()//вывод позиции
+		{
+			cout << "x = " << x << " ; y = " << y << "; direction = " << dir << endl;
+		}
+		friend ostream& operator<<(ostream& out, const Vehicle& c);//перегрузка оператора <<
+};
+class Car : public Vehicle// класс "автомобиль"
+{
+	private:
+		double fuel, fcons;
+		int passengers;
+	public:
+		Car(double xx=0, double yy=0, double d=0, double fc=0) : Vehicle(xx, yy, d), passengers(0), fuel(0), fcons(fc) {};
+		void move(double len)
+		{
+			if (fuel >= len / fcons)
+			{
+				x += len*cos(dir);
+				y += len*sin(dir);
+				fuel -= len / fcons;
+			}
+			else cout << "no fuel" << endl;
+
+		}
+		void refuel(double f)//заправить бензин
+		{
+
+			fuel += f;
+			cout << fuel << endl;
+		}
+		void enter(int n)//пассажиры зашли
+		{
+			if (n >= 0 && n < 4)
+				passengers += n;
+		}
+		void exit(int n)//пассажиры вышли
+		{
+			if (n >= 0 && n <= passengers)
+				passengers -= n;
+		}
+};
+ostream& operator<<(ostream& out, const Vehicle& c)
+{
+	out << "x = " << c.x << " ; y = " << c.y << "; direction = " << c.dir;
+	return out;
+};
+
+int main()
+{
+	queue<Car> q;//очередь
+	int n;
+	cout << "Input numbers of car"<<endl;
+	cin >> n;
+	for(int i=0;i<n;i++)//заполнение очереди
+    {
+        q.push(Car(i,i,i));
+    }
+    n=0;
+    while(!q.empty())//перебор очереди
+    {
+        n++;
+        cout << "Car " << n << ": " << q.front() << endl;
+        q.pop();
+    }
+	system("pause");
+	return 0;
+}
