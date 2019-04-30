@@ -1,0 +1,59 @@
+#include<iostream>
+#include<list>
+#include <iterator>
+using namespace std;
+class Complex
+{
+private:
+	double real;
+	double img;
+public:
+	Complex(double r = 0, double i = 0);//конструктор
+	Complex& operator=(const Complex& right);//перегрузка оператора =
+	friend bool operator==(const Complex &left, const Complex &right);//перегрузка оператора ==
+	friend ostream& operator<<(ostream& out, const Complex& c);//перегрузка оператора <<
+	friend istream& operator>>(istream& in, Complex& c);//перегрузка оператора >>
+};
+Complex::Complex(double r, double i) : real(r), img(i) {};
+Complex& Complex::operator=(const Complex& right) {
+	if (this == &right) {
+		return *this;
+	}
+	real = right.real;
+	img = right.img;
+	return *this;
+};
+bool operator==(const Complex &left, const Complex &right)
+{
+	return (left.real == right.real && left.img == right.img);
+};
+ostream& operator<<(ostream& out, const Complex& c)
+{
+	out << c.real << "+" << c.img << "i";
+	return out;
+};
+
+istream& operator>>(istream& in, Complex& c)
+{
+	in >> c.real >> c.img;
+	return in;
+};
+int main()
+{
+    int n;
+    double re,im;
+    Complex c;
+	list<Complex> li;//список
+    cout<<"Input number of complex numbers"<<endl;
+    cin >> n;
+    for(int i=0;i<n;i++)//заполнени писка
+    {
+        cout << "Input complex number" << endl;
+        cin >> re >> im;
+        li.push_back(Complex(re,im));
+    }
+    copy(li.begin(), li.end(), ostream_iterator<Complex>(cout," "));//вывод списка
+
+	system("pause");
+	return 0;
+}
