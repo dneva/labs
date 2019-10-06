@@ -1,0 +1,34 @@
+package Lab1;
+
+public class Circle {
+    public double x;
+    public double y;
+    public double radius;
+    public Circle(double x, double y, double r)
+    {
+        this.x=x;
+        this.y=y;
+        radius=r;
+    }
+    public void SetCenter(double x, double y)
+    {
+        this.x=x;
+        this.y=y;
+    }
+    public void SetRadius(double r)
+    {
+        radius=r;
+    }
+    public double GetX()
+    {
+        return x;
+    }
+    public double GetY()
+    {
+        return y;
+    }
+    public double GetRadius()
+    {
+        return radius;
+    }
+}
