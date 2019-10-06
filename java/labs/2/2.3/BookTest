@@ -1,0 +1,20 @@
+package Lab1;
+
+import java.util.Scanner;
+
+public class BookTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Book b = new Book("","", "");
+        System.out.println("Введите имя автора книги");
+        b.SetAuthor(sc.nextLine());
+        System.out.println("Введите название книги");
+        b.SetName(sc.nextLine());
+        System.out.println("Введите год книги");
+        b.SetYear(sc.nextLine());
+        System.out.println("Информация о книге:");
+        System.out.println("Название: "+b.GetName());
+        System.out.println("Автор: "+b.GetAuthor());
+        System.out.println("Год: "+b.GetYear());
+    }
+}
