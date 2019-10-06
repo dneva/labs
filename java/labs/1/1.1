@@ -1,0 +1,41 @@
+package Lab1;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] a = new int[10];
+        int sum = 0;
+
+        System.out.println("Введите массив (10)");
+        for (int i = 0; i < 10; i++) {
+            a[i]=sc.nextInt();
+        }
+        
+        System.out.println("Сумма с помощью цикла for:");
+        for (int i = 0; i < 10; i++) {
+            sum += a[i];
+        }
+        System.out.println(sum);
+
+        System.out.println("Сумма с помощью цикла while:");
+        int i=0;
+        sum=0;
+        while(i<10){
+            sum += a[i];
+            i++;
+        }
+        System.out.println(sum);
+
+        System.out.println("Сумма с помощью цикла do while:");
+        i=0;
+        sum=0;
+        do {
+            sum += a[i];
+            i++;
+        } while(i<10);
+        System.out.println(sum);
+    }
+}
