@@ -1,0 +1,19 @@
+package Lab1;
+
+import java.util.Scanner;
+
+public class HumanTest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Human h = new Human("","");
+        System.out.println("Введите имя человека");
+        h.SetName(sc.next());
+        System.out.println("Введите что он должен сказать");
+        h.SetSay(sc.next());
+        System.out.println("Проверка:");
+        System.out.println("Человека зовут: "+h.GetName());
+        System.out.println("Он говорит: "+h.GetSay());
+        System.out.println("Проверка рук и ног: ");
+        h.Test();
+    }
+}
