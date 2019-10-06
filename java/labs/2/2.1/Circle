@@ -1,9 +1,9 @@
 package Lab1;
 
 public class Circle {
-    public double x;
-    public double y;
-    public double radius;
+    private double x;
+    private double y;
+    private double radius;
     public Circle(double x, double y, double r)
     {
         this.x=x;
