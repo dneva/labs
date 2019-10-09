@@ -1,0 +1,13 @@
+package Lab3;
+
+public class TestDish {
+
+    public static void main(String[] args) {
+        Plate p=new Plate(true,false);
+        Knife k=new Knife(false,false);
+        p.MakeFood();
+        k.Wash();
+        p.Info();
+        k.Info();
+    }
+}
