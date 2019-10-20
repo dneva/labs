@@ -1,0 +1,11 @@
+package Lab4;
+
+public class TestNameable {
+
+    public static void main(String[] args) {
+        Nameable nameable=new Planet("Марс",3396.7);
+        System.out.println("Название планеты: "+nameable.getName());
+        nameable=new Car("черный","renault sandero");
+        System.out.println("Название машины: "+nameable.getName());
+    }
+}
