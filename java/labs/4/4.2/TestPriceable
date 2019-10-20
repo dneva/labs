@@ -1,0 +1,14 @@
+package Lab4;
+
+public class TestPriceable {
+
+    public static void main(String[] args) {
+        Priceable priceable=new Car("черный","renault sandero",367000);
+        System.out.println("Цена машины: "+priceable.getPrice());
+        priceable=new Table("Коричневый",10500,450,225);
+        System.out.println("Цена стола: "+priceable.getPrice());
+        priceable=new Chair("Черный",434,"Офисный");
+        System.out.println("Цена стула: "+priceable.getPrice());
+
+    }
+}
