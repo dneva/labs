@@ -1,0 +1,15 @@
+package Lab3;
+
+public class TestFurniture {
+
+    public static void main(String[] args) {
+        FurnitureShop fs=new FurnitureShop();
+        Table t1=new Table("Белый",500,120,120);
+        Table t2=new Table("Коричневый",10500,450,225);
+        Chair c=new Chair("Черный",434,"Офисный");
+        fs.AddGood(t1);
+        fs.AddGood(t2);
+        fs.AddGood(c);
+        fs.Info();
+    }
+}
