@@ -1,0 +1,13 @@
+package Lab3;
+
+public class TestDog {
+
+    public static void main(String[] args) {
+        Corgi c=new Corgi("Toby",3);
+        ShepherdDog s=new ShepherdDog("Zeus",6);
+        c.getInfo();
+        System.out.println("Голос!\n"+c.Barking());
+        s.getInfo();
+        System.out.println("Голос!\n"+s.Barking());
+    }
+}
