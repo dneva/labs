@@ -1,0 +1,18 @@
+
+Измените код в листинге 1 на следующий: 
+
+public class Exception2 { 
+      public void exceptionDemo() { 
+            Scanner myScanner = new Scanner( System.in ); 
+            System.out.print( "Enter an integer ");
+                          String intString = myScanner.next();
+                          int i = Integer.parseInt(intString); System.out.println( 2 / i ); 
+       } 
+} 
+ 
+
+Листинг 3 
+Запустите эту программу со следующими выводами: Qwerty 0 1.2 1 
+Посмотрите на вывод. Какие исключения выбрасываются?
+Измените код, добавив блоки try – catch, чтобы иметь дело с определяемыми исключениями.
+
