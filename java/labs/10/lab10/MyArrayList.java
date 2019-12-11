@@ -1,7 +1,4 @@
-package lab7;
-
-import java.util.AbstractList;
-import java.util.List;
+package lab10;
 
 public class MyArrayList<E> {
     private E[] objects;
@@ -35,7 +32,6 @@ public class MyArrayList<E> {
         }
 
     }
-
     public E remove(E e) {
        return remove(indexOf(e));
     }
@@ -48,14 +44,23 @@ public class MyArrayList<E> {
         objects[size] = null;
         return r;
     }
-
+    public E get(int index)
+    {
+        if (index >= size)
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        return objects[index];
+    }
     public void print() {
         for (int i = 0; i < size; i++) {
             System.out.print(objects[i] + " ");
         }
         System.out.println();
     }
-
+    public void convert(E[] e)
+    {
+        objects=e;
+        size = e.length;
+    }
     public int size() {
         return size;
     }

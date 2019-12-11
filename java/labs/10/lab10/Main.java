@@ -2,11 +2,11 @@ package lab10;
 public class Main {
 
     public static void main(String[] args) {
-	Container<Integer> c1=new Container<Integer>();
+		MyArrayList <Integer> c1=new  MyArrayList <Integer>();
 
 	for(int i=0;i<30;i++) c1.add(i);
 	c1.print();
-	Container<String> c2=new Container<String>();
+		MyArrayList <String> c2=new  MyArrayList<String>();
 	String st="";
 	for(int i=0;i<20;i++)
 	{
@@ -14,5 +14,11 @@ public class Main {
 		c2.add(st);
 	}
 	c2.print();
+	System.out.println(c2.get(6));
+	Integer []a ={1,2,3,4,5,6,7};
+	c1.<Integer>convert(a);
+	c1.print();
+
     }
+
 }
