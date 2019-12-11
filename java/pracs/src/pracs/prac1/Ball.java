@@ -1,8 +1,8 @@
 package pracs.prac1;
 
 public class Ball {
-    String color;
-    Double radius;
+    private String color;
+    private Double radius;
     public Ball(String c, Double r)
     {
         color=c;
