@@ -12,10 +12,10 @@ public class Container<E> {
             objects[size] = e;
         } else {
             Object[] bufobjects=new Object[size+10];
-            System.arraycopy(objects,0,bufobjects,0,size+10);
-            bufobjects[size] = e;
+            for(int i=0;i<size;i++) bufobjects[i]=objects[i];
             objects=new Object[size+10];
-            System.arraycopy(bufobjects,0,objects,0,size+10);
+            objects=bufobjects;
+            objects[size] = e;
         }
         ++size;
     }
