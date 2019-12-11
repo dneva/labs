@@ -1,4 +1,4 @@
-package pracs;
+package pracs.prac1;
 
 public class Ball {
     String color;
@@ -34,6 +34,6 @@ public class Ball {
     }
     public String toString()
     {
-        return "This is " + color + "with a radius of " + radius;
+        return "This is " + color + " ball with a radius of " + radius;
     }
 }
