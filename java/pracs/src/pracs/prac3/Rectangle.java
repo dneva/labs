@@ -13,7 +13,7 @@ public class Rectangle extends Shape{
         this.width=width;
         this.length=length;
     }
-    public Rectangle(Double width, Double lenght, String color, boolean filled)
+    public Rectangle(Double width, Double length, String color, boolean filled)
     {
         super(color,filled);
         this.width=width;
