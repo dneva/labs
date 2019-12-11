@@ -12,6 +12,6 @@ public class TestBook {
         b.setName(name);
         b.setAuthor(author);
         b.setPages(pages);
-        System.out.println("This is "+b.toString());
+        System.out.println(b);
     }
 }
