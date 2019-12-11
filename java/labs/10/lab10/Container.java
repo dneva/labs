@@ -1,4 +1,4 @@
-package labs;
+package lab10;
 public class Container<E> {
     private Object[] objects;
     private int size;

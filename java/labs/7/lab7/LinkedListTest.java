@@ -1,8 +1,8 @@
-package Lab7;
+package lab7;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Main {
+public class LinkedListTest {
 
     public static void main(String[] args) {
 	    LinkedList<String> names=new LinkedList<String>();
