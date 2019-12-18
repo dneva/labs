@@ -12,8 +12,7 @@ public class prac5_1 {
         }
         for(int i=0;i<n;i++)
             System.out.print(n+" ");
-        func(n-1);
-        return 1;
+        return func(n-1);
     }
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
