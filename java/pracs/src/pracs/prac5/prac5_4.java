@@ -16,7 +16,6 @@ public class prac5_4 {
             a = a / 10;
         }
         sum+=a;
-       // System.out.println(sum);
         if(sum==d)
             System.out.println(s);
         return func(k,s-1, d);
