@@ -1,7 +1,7 @@
 package pracs.prac5;
 
 import java.util.Scanner;
-
+//Дано натуральное число n. Выведите все числа от 1 до n.
 public class prac5_2 {
     public static int func(int n){
         if(n==1) {
