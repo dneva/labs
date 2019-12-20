@@ -13,7 +13,7 @@ public class TestMergeSort {
         st2[2]=new Student(5,"Kruglov","Petrovich","Petr",18,4.5);
 
         Student[] st3 = MergeSort.merge(st1,st2);
-        MergeSort.sort(st3,0,5);
+        st3 = MergeSort.sort(st3);
         for(Student s:st3)
         {
             System.out.println(s);
