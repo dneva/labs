@@ -4,6 +4,14 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class GameStack {
+    public static boolean gameRule(int a, int b)
+    {
+        if (a==9 && b==0)
+            return false;
+        if(a>b)
+            return true;
+        return false;
+    }
     public static void main(String[] args) {
         Stack<Integer> st1=new Stack<Integer>();
         Stack<Integer> st2=new Stack<Integer>();
@@ -21,18 +29,16 @@ public class GameStack {
         System.out.println("Колода второго игрока: "+st2);
         while(!(st1.empty() || st2.empty())&&count!=106){
             Stack<Integer> buff=new Stack<Integer>();
-            if(st1.peek()>st2.peek() && (st1.peek()!=9 && st2.peek()!=0)) {
-                st2.push(st1.pop());
-                while (!st1.empty())
-                {
-                    buff.push(st1.pop());
-                }
-                buff.push(st2.pop());
-                st1.push(st2.pop());
-                while (!buff.empty())
-                {
-                    st1.push(buff.pop());
-                }
+            if(gameRule(st1.peek(),st2.peek())) {
+                    st2.push(st1.pop());
+                    while (!st1.empty()) {
+                        buff.push(st1.pop());
+                    }
+                    buff.push(st2.pop());
+                    st1.push(st2.pop());
+                    while (!buff.empty()) {
+                        st1.push(buff.pop());
+                    }
             }
             else {
                 st1.push(st2.pop());
