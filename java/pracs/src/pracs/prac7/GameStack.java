@@ -3,7 +3,7 @@ package pracs.prac7;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class Game {
+public class GameStack {
     public static void main(String[] args) {
         Stack<Integer> st1=new Stack<Integer>();
         Stack<Integer> st2=new Stack<Integer>();
